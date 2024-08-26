@@ -1,0 +1,8 @@
+packages:
+  - 'services/libs/*'
+  - 'services/archetypes/*'
+  - 'services/apps/*'
+  - 'services/apps/premium/*'
+  - 'services'
+  - 'backend'
+  - '.github/actions/node'
