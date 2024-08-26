@@ -1,8 +1,13 @@
 packages:
-  - 'services/libs/*'
-  - 'services/archetypes/*'
-  - 'services/apps/*'
-  - 'services/apps/premium/*'
-  - 'services'
-  - 'backend'
-  - '.github/actions/node'
+  # all packages in subdirs of packages/ and components/
+  - 'packages/*'
+  # Angular projects - these are nested under the Angular workspace root, and need version bumps during release.
+  - 'packages/notification-center-angular/projects/*'
+  - 'apps/*'
+  - 'libs/*'
+  # exclude packages that are inside test directories
+  - '!**/test/**'
+  # all packages in enterprise modules
+  - 'enterprise/packages/*'
+  # playground apps
+  - 'playground/*'

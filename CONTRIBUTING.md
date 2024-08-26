@@ -1,148 +1,93 @@
-# Contributing to crowd.dev
+# Contributing to Novu
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
+Thank you for showing an interest in contributing to Novu! All kinds of contributions are valuable to us. In this guide, we will cover how you can quickly onboard and make your first contribution.
 
-## Ways to contribute
+## Submitting an issue
 
-- Try the crowd.dev platform & API and give feedback by [creating new issues](https://github.com/CrowdDotDev/crowd.dev/issues/new/choose).
-- Help with [open issues](https://github.com/CrowdDotDev/crowd.dev/issues).
-- Add a new integration following our [framework](https://docs.crowd.dev/docs/integration-framework).
-- Help create tutorials and [blog](https://www.crowd.dev/blog) posts.
-- Improve [documentation](https://docs.crowd.dev/docs) by fixing incomplete or missing docs, bad wording, examples, or explanations.
+Before submitting a new issue, please search the existing [issues](https://github.com/novuhq/novu/issues). Maybe an issue already exists and might inform you of workarounds. Otherwise, you can give new information.
 
-Any contributions you make are **greatly appreciated**. ❤️
+While we want to fix all the [issues](https://github.com/novuhq/novu/issues), before fixing a bug we need to be able to reproduce and confirm it. Please provide us with a minimal reproduction scenario using a repository or [Gist](https://gist.github.com/). Having a live, reproducible scenario gives us the information without asking questions back & forth with additional questions like:
 
-### Issue priorities
+- 3rd-party libraries being used and their versions (mainly providers, but not exclusively)
+- a use-case that fails
 
-<table>
-  <tr>
-    <td>
-      Type of Issue
-    </td>
-    <td>
-      Priority
-    </td>
-  </tr>
-   <tr>
-    <td>
-      Bug in Critical Features (Login, Integrations, etc)
-    </td>
-    <td>
-      <a href="https://github.com/calcom/cal.com/issues?q=is:issue+is:open+sort:updated-desc+label:Urgent">
-        <img src="https://img.shields.io/badge/-Urgent-red">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Bug in Core Features (Home, Members, Organizations, Activities, Reports)
-    </td>
-    <td>
-      <a href="https://github.com/calcom/cal.com/issues?q=is:issue+is:open+sort:updated-desc+label:%22High+priority%22">
-        <img src="https://img.shields.io/badge/-High%20Priority-orange">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Confusing UX (but it's working)
-    </td>
-    <td>
-      <a href="https://github.com/calcom/cal.com/issues?q=is:issue+is:open+sort:updated-desc+label:%22Medium+priority%22">
-        <img src="https://img.shields.io/badge/-Medium%20Priority-yellow">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Minor improvements
-    </td>
-    <td>
-      <a href="https://github.com/calcom/cal.com/issues?q=is:issue+is:open+sort:updated-desc+label:%22Low+priority%22">
-        <img src="https://img.shields.io/badge/-Low%20Priority-green">
-      </a>
-    </td>
-  </tr>
-</table>
+Without said minimal reproduction, we won't be able to investigate all [issues](https://github.com/novuhq/novu/issues), and the issue might not be resolved.
 
+You can open a new issue with this [issue form](https://github.com/novuhq/novu/issues/new).
 
-## How to contribute to development
+## Projects setup and Architecture
 
-We welcome any contribution to crowd.dev. Before you start with your first issue, please consider the following points:
+### Requirements
 
-- For your first contribution, we recommend taking a look at our ["good first issues" 🥂](https://github.com/CrowdDotDev/crowd.dev/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue+%F0%9F%A5%82%22).
-- Other issues that are well suited for contribution have the tag ["help wanted" 🙏](https://github.com/CrowdDotDev/crowd.dev/labels/help%20wanted%20%F0%9F%99%8F).
-- If you want to contribute to our codebase, you have to first [sign our Contributor License Agreement](https://cla-assistant.io/CrowdDotDev/crowd.dev).
-- If you need help, you can reach us either via [Discord](http://crowd.dev/discord) or [Book a 15-min Contributor Onboarding Call](https://cal.com/team/CrowdDotDev/contributor-onboarding?duration=15).
+- Node.js v20.8.1 (LTS)
 
-#### Requirements
+  - To install Node.js v20.8.1 (LTS) through NVM (Node Version Manager), follow these steps:
 
-- Node v16.16.0
-- Docker and docker-compose
+    1. Open your terminal.
 
+    2. Install NVM if you haven't already. You can install NVM by following the instructions at [NVM GitHub](https://github.com/nvm-sh/nvm).
 
-#### Setup the project
+    3. Once NVM is installed, run the following command to install and use Node.js v20.8.1:
 
-The project is a monorepo, meaning that it is a collection of multiple packages managed in the same repository. In the following steps, you'll learn how to get the project up and running for development purposes.
+       ```bash
+       nvm install 20.8.1
 
-1. Get the mono repo from GitHub
+       nvm use 20.8.1
 
-```shell
-git clone git@github.com:CrowdDotDev/crowd.dev.git
-```
+       node -v # output: v20.8.1
+       ```
 
-2. Run the start script:
+    4. You can set Node.js v20.8.1 as your default version with the following command:
 
-```shell
-cd scripts
-./cli start
-```
+       ```bash
+       nvm alias default 20.8.1
 
-For hot reloading, you can run:
-```shell
-cd scripts
-./cli clean-start-dev
-```
+       ```
 
-The app will be available at http://localhost:8081
+- [MongoDB](https://www.mongodb.com/try/download/community)
+- Redis. To install Redis on your Operating System, please follow the below guides
+  - [To install Redis on Windows](https://redis.io/docs/getting-started/installation/install-redis-on-windows/)
+  - [To install Redis on Linux](https://redis.io/docs/getting-started/installation/install-redis-on-linux/)
+  - [To install Redis on macOS](https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/)
+- **(Optional)** pnpm - Needed if you want to install new packages
+- **(Optional)** localstack (required only in S3 related modules)
 
-For more information on development, you can <a href="https://docs.crowd.dev/docs/docker-compose-single-machine-development-with-docker-images">check our docs</a>.
+### Setup the project
 
-#### Running services individually
+The project is a monorepo, meaning that it is a collection of multiple packages managed in the same repository.
 
-To optimize resource usage during development, we would suggest starting only the necessary services and leveraging hot reloading where applicable. 
+To learn more about the project structure and running the project locally, please have a look [here](https://docs.novu.co/community-support/introduction#run-novu-locally?utm_campaign=github-contrib).
+After cloning your fork, you will need to run the `npm run setup:project` command to install and build all dependencies.
 
-1. Start the scaffold service, including the necessary components like the database, etc:
+To learn a detailed guide on running the project locally, checkout our guide on [how to run novu in local machine](https://docs.novu.co/community/run-in-local-machine?utm_campaign=github-contrib).
 
-```shell
-./cli scaffold up 
-```
+## Missing a Feature?
 
-This will set up the foundational services required for the project.
+If a feature is missing, you can directly _request_ a new one [here](https://github.com/novuhq/novu/issues/new?assignees=&labels=feature&template=feature_request.yml&title=%F0%9F%9A%80+Feature%3A+). You also can do the same by choosing "🚀 Feature" when raising a [New Issue](https://github.com/novuhq/novu/issues/new/choose) on our GitHub Repository.
+If you would like to _implement_ it, an issue with your proposal must be submitted first, to be sure that we can use it. Please consider the guidelines given below.
 
-2. If you are primarily working on the frontend but also need the API without hot reloading:
-
-
-```shell
-DEV=1 ./cli service frontend up
-./cli service api up
-```
-
-By selectively starting the frontend and API services without enabling hot reloading, helps reduce resource usage. 
-
-Feel free to adjust the commands based on the specific services you need for your development tasks.
-
-#### Coding guidelines
+## Coding guidelines
 
 To ensure consistency throughout the source code, please keep these rules in mind as you are working:
 
-- All features or bug fixes must be tested by one or more specs (unit tests).
-- We use [Eslint default rule guide](https://eslint.org/docs/rules/), with minor changes. An automated formatter is available using Prettier.
-- In-code documentation is required for every function or class that is not self-evident.  
-- All new API endpoints that are relevant to the public API must have in-code documentation to generate OpenAPI specifications.  
-- The pipeline must pass.
+- All features or bug fixes must be tested by one or more specs (unit-tests).
+- We use [Eslint default rule guide](https://eslint.org/docs/rules/), with minor changes. An automated formatter is available using prettier.
 
+## Need help? Questions and suggestions
 
-## Need help? 🛟
+Questions, suggestions, and thoughts are most welcome. Feel free to open a [GitHub Issue](https://github.com/novuhq/novu/issues/new/choose). We can also be reached on our [Discord Server](https://discord.novu.co).
 
-If you need help with any sort of contribution, please feel free to reach out on [Discord](https://go.crowd.dev/discord) or book a [contributor onboarding call](https://cal.com/team/CrowdDotDev/contributor-onboarding?duration=15).
+## Ways to contribute
+
+- Try the Novu API and platform and give feedback
+- Add new providers
+- Help with open [issues](https://github.com/novuhq/novu/issues) or [create your own](https://github.com/novuhq/novu/issues/new/choose)
+- Share your thoughts and suggestions with us
+- Help create tutorials and blog posts
+- Request a feature by submitting a proposal
+- Report a bug
+- **Improve documentation** - fix incomplete or missing [docs](https://docs.novu.co/?utm_campaign=github-contrib), bad wording, examples or explanations.
+
+## Missing a provider?
+
+If you are in need of a provider we do not yet have, you can request a new one by [submitting an issue](#submitting-an-issue). Or you can build a new one by following our [create a provider guide](https://docs.novu.co/community/add-a-new-provider?utm_campaign=github-contrib).
